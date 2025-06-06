@@ -4,8 +4,66 @@ description: An animated beam of light which travels along the border of its con
 author: panupat.top
 ---
 
+import { Tabs, Callout } from "nextra/components";
+import { CopyCode } from "@/components/registry/copy-code/component";
+import { Preview } from "@/components/module/preview";
+import { Annoyed } from "lucide-react";
+
 # Copy Code
 
 The `CopyCode` component allows users to copy code snippets to their clipboard with a simple click. It provides a user-friendly interface for copying code, enhancing the developer experience.
 
 ### Preview
+
+<Preview className="mt-6">
+  <CopyCode code="value" />
+</Preview>
+
+### Installation
+
+```bash filename="Terminal" copy
+npx shadcn@latest add "https://localhost:3000/r/button-copy.json"
+```
+
+### Usage
+
+```tsx
+import { CopyCode } from "@/components/alphaui/copy-code/copy-code";
+```
+
+```tsx
+<CopyCode code="value" />
+```
+
+### Example
+
+- Custom Icon
+
+<Tabs items={["Preview", "Code"]}>
+  <Tabs.Tab>
+    <Preview>
+      <div className="bg-white dark:bg-gray-950 shadow rounded-full w-fit mx-auto p-2">
+        <CopyCode code="value" idleIcon={<Annoyed size={16} />} />
+      </div>
+    </Preview>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx
+    <div className="bg-white dark:bg-gray-950 shadow rounded-full w-fit mx-auto p-2">
+      <CopyCode code="value" idleIcon={<Annoyed size={16} />} />
+    </div>
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Props
+
+| Prop           | Type              | Default | Description                                                    |
+| -------------- | ----------------- | ------- | -------------------------------------------------------------- |
+| `code`         | `string`          | `-`     | The code to be copied to the clipboard.                        |
+| `idleIcon?`    | `React.ReactNode` | `-`     | The icon to be displayed when the button is idle.              |
+| `successIcon?` | `React.ReactNode` | `-`     | The icon to be displayed when the code is successfully copied. |
+
+### Note
+
+<Callout type="info">Use [motion](https://motion.dev/) for animation</Callout>
